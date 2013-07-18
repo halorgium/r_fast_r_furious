@@ -1,11 +1,10 @@
-require "v8"
 require "net/http"
 require "uri"
 
 module RFastRFurious
   SOURCE = "https://raw.github.com/alunny/r_fast_r_furious/master/fast.js"
-  REGEX = /^((T(he)(?=.*the)|2(?=.* 2)) )?Fast (Five|(((and t\3)|\2(?=.*s$)|&(?!.*:)) Furious(( (6|7))|: Tokyo Drift)?))$/
-  OFFLINE_ERRORS = [SocketError, Timeout::Error]
+  REGEX  = /^((T(he)(?=.*the)|2(?=.* 2)) )?Fast (Five|(((and t\3)|\2(?=.*s$)|&(?!.*:)) Furious(( (6|7))|: Tokyo Drift)?))$/
+  ERRORS = [LoadError, SocketError, Timeout::Error]
 
   def offline_check(string)
     !!REGEX.match(string)
@@ -20,10 +19,16 @@ module RFastRFurious
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     content = response.body
-    cxt = V8::Context.new
+    cxt = if RUBY_PLATFORM == "java" # JRuby
+      require "rhino"
+      Rhino::Context.new
+    else
+      require "v8"
+      V8::Context.new
+    end
     cxt.eval(content, "fast.js")
     cxt["r_fast_r_furious"].call(string)
-  rescue *OFFLINE_ERRORS
+  rescue *ERRORS
     offline_check(string)
   end
   module_function :check
