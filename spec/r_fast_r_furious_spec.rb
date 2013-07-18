@@ -4,11 +4,6 @@ RSpec.describe RFastRFurious do
 
   describe ".check" do
 
-    before do
-      stub_request(:get, "https://raw.github.com/alunny/r_fast_r_furious/master/fast.js").
-        to_return(:body => File.new(File.expand_path("../fixtures/fast.js", __FILE__)))
-    end
-
     AWESOME_MOVIES = [
       "The Fast and the Furious",
       "2 Fast 2 Furious",
