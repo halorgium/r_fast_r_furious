@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require "r_fast_r_furious"
+    RFastRFurious.check("Fast Five") # => true
+    RFastRFurious.check("The Sorrow and the Pity") # => false
 
 ## Contributing
 
