@@ -1,3 +1,3 @@
 module RFastRFurious
-  VERSION = "1.0.1.pre"
+  VERSION = "2.0.0.pre"
 end
