@@ -1,6 +1,6 @@
 # RFastRFurious
 
-easily validate movie titles from the fast and the furious saga
+Easily validate movie titles from the fast and the furious saga
 
 ## Installation
 
