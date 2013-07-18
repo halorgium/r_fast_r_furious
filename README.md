@@ -22,6 +22,10 @@ Or install it yourself as:
     RFastRFurious.check("Fast Five") # => true
     RFastRFurious.check("The Sorrow and the Pity") # => false
 
+## The Awesome Regex Explained
+
+![http://www.debuggex.com/](r_fast_r_furious.png)
+
 ## Contributing
 
 1. Fork it
