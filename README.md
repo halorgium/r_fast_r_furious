@@ -2,6 +2,8 @@
 
 Easily validate movie titles from the fast and the furious saga
 
+* Using and based upon [@alunny](https://github.com/alunny)'s [implementation](https://github.com/alunny/r_fast_r_furious)
+
 ## Installation
 
 Add this line to your application's Gemfile:
